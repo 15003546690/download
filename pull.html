@@ -1,0 +1,91 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>超哥自制加载</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta name="format-detection" content="telephone=no"/>
+	<meta name="format-detection" content="email=no"/>
+	<link rel="stylesheet" href="css/css.css">
+</head>
+<body>
+	<div class="container">
+		<header class="header">
+			<h2>头部</h2>
+		</header>
+		<main class="main" id="main">
+			<div class="all">
+				<!-- <a href="#">
+					<img src="img/pic.png">
+					<h3>打哈撒你说的就爱上你你打算剑南道那谁家电脑你傻的及纳税</h3>
+					<span>2016-06-16</span>
+				</a>
+				<a href="#">
+					<img src="img/pic.png">
+					<h3>打哈撒你说的就爱上你你打算剑南道那谁家电脑你傻的及纳税</h3>
+					<span>2016-06-16</span>
+				</a>
+				<a href="#">
+					<img src="img/pic.png">
+					<h3>打哈撒你说的就爱上你你打算剑南道那谁家电脑你傻的及纳税</h3>
+					<span>2016-06-16</span>
+				</a>
+				<a href="#">
+					<img src="img/pic.png">
+					<h3>打哈撒你说的就爱上你你打算剑南道那谁家电脑你傻的及纳税</h3>
+					<span>2016-06-16</span>
+				</a>
+				<a href="#">
+					<img src="img/pic.png">
+					<h3>打哈撒你说的就爱上你你打算剑南道那谁家电脑你傻的及纳税</h3>
+					<span>2016-06-16</span>
+				</a>
+				<a href="#">
+					<img src="img/pic.png">
+					<h3>打哈撒你说的就爱上你你打算剑南道那谁家电脑你傻的及纳税</h3>
+					<span>2016-06-16</span>
+				</a>
+				<a href="#">
+					<img src="img/pic.png">
+					<h3>打哈撒你说的就爱上你你打算剑南道那谁家电脑你傻的及纳税</h3>
+					<span>2016-06-16</span>
+				</a>
+				<a href="#">
+					<img src="img/pic.png">
+					<h3>打哈撒你说的就爱上你你打算剑南道那谁家电脑你傻的及纳税</h3>
+					<span>2016-06-16</span>
+				</a>	 -->
+			</div>			
+		</main>
+	</div>
+	<script src="js/zepto.min.js"></script>
+	<script src="js/pull.js"></script>
+	<script src="js/drop.js"></script>
+	<script>
+		var json = {
+				"page_no": 1,
+				"page_size": 7,
+				"notice_state": "'3','4'",
+				"order_by": "create_date"
+			};
+			$.ajax({
+				url: 'http://192.168.5.220:20010/notice/search',
+				type: 'POST',
+				contentType: "application/json; charset=UTF-8",
+				data: JSON.stringify(json),
+				success:function(re){
+					var str="";
+					$.each(re.data.notice_list,function(i,ele){
+						str+='<a href="#">'+
+									'<img src="img/1.jpg" alt="">'+
+									'<h3>'+ele.notice_publisher+'</h3>'+
+									'<span>'+ele.notice_id+'</span>'+
+								'</a>';
+					})
+					$('.all').html(str)
+				}
+			})
+	</script>
+</body>
+</html>
